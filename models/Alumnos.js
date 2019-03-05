@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const alumnoSchema = new Schema({
-    title: {
-        alumno: String,
+    alumno: {
+        type: String,
         required: true
     },
     edad: {
@@ -26,4 +26,4 @@ const alumnoSchema = new Schema({
 
 const Alumno = mongoose.model('Alumno', alumnoSchema);
 
-module.exports = Book;
+module.exports = Alumno;

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const bookRoutes = require('./alumnos');
+const alumnoRoutes = require('./alumnos');
 
 router.use('/api/alumnos', alumnoRoutes);
 
