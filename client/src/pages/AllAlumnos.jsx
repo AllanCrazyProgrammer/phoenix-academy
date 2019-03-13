@@ -6,11 +6,7 @@ import Table from 'react-bootstrap/Table'
 
 class AllAlumnos extends Component {
     state = {
-        nombre: "",
-        edad: "",
-        direccion: "",
-        curp: "",
-        enfermedad: ""
+        alumnos: []
     }
 
     componentDidMount() {
@@ -20,13 +16,8 @@ class AllAlumnos extends Component {
     loadAlumnos = () => {
         API.getAlumnos()
             .then(res => {
-                console.log(res)
                 this.setState({
-                    nombre: res.data,
-                    edad: res.data,
-                    direccion: res.data,
-                    curp: res.data,
-                    enfermedad: res.data
+                    alumnos: res.data
                 })
             })
             .catch(err =>
@@ -49,14 +40,16 @@ class AllAlumnos extends Component {
                     </thead>
                     <tbody>
                         {
-
+                            this.state.alumnos.map(alumno => (
+                                <tr>
+                                    <td>{alumno.alumno}</td>
+                                    <td>{alumno.edad}</td>
+                                    <td>{alumno.direccion}</td>
+                                    <td>{alumno.curp}</td>
+                                    <td>{alumno.enfermedad}</td>
+                                </tr>
+                            ))
                         }
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
                     </tbody>
                 </Table>;
 
