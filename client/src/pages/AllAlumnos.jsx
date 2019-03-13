@@ -27,7 +27,6 @@ class AllAlumnos extends Component {
     render() {
         return (
             <container fluid>
-                <ButtonCheckbox method={"get"} />
                 <Table striped bordered hover size="sm">
                     <thead>
                         <tr>
