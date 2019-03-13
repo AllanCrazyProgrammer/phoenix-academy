@@ -20,7 +20,7 @@ class AllAlumnos extends Component {
     loadAlumnos = () => {
         API.getAlumnos()
             .then(res => {
-                console.log(res)
+                console.log(res.data[3])
                 this.setState({
                     nombre: res.data,
                     edad: res.data,
