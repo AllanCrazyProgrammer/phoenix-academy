@@ -1,24 +1,21 @@
 import React, { Component } from 'react';
-import ButtonCheckbox from "./components/buttonCheckbox"
-import AddModal from "./components/addModal"
-import DivideModal from "./components/addModal"
-import MinusModal from "./components/addModal"
-import MultiplyModal from "./components/addModal"
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavButtons from "./pages/NavButtons"
 import './App.css';
+import EditModal from './components/editModal';
 
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
-        <FileReader />
-        <ButtonCheckbox />
-        <AddModal />
-        <DivideModal/>
-        <MinusModal/>
-        <MultiplyModal/>
+      <Router>
+        <>
+          <Switch>
+            <Route exact path="/" component={NavButtons} />
+            <Route exact path="/:id" component={EditModal} />
+          </Switch>
+        </>
+      </Router>
 
-      </React.Fragment>
     );
   }
 }

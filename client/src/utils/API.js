@@ -7,9 +7,9 @@ export default {
         return axios.get('/api/alumnos/');
     },
     // Gets the alumno with the given id
-    //getAlumno: function (id) {
-    //    return axios.get('/api/alumnos/' + id);
-    //},
+    getOneAlumno: function (id) {
+        return axios.get('/api/alumnos/' + id);
+    },
     // Deletes the alumno with the given id
     deleteAlumno: function (id) {
         return axios.delete('/api/alumnos/' + id);
