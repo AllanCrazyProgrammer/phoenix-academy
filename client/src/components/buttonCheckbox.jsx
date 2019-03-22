@@ -1,6 +1,4 @@
 import React from 'react';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
-import ToggleButton from 'react-bootstrap/ToggleButton'
 import AllAlumnos from '../pages/AllAlumnos'
 class ButtonCheckbox extends React.Component {
 

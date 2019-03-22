@@ -39,7 +39,6 @@ class AddModal extends React.Component {
     }
 
     newUser = () => {
-        debugger;
 
         this.postAlumnos()
         this.handleClose()

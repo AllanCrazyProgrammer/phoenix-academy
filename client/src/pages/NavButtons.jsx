@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import AddModal from "../pages/addModal"
-import AllAlumnos from "../pages/AllAlumnos"
+import ButtonCheckbox from "../components/buttonCheckbox"
 class NavButtons extends Component {
     state = {}
     render() {
         return (
             <>
                 <AddModal />
-                <AllAlumnos />
+                <ButtonCheckbox />
             </>
         );
     }

@@ -17,5 +17,9 @@ export default {
     // Saves a alumno to the database
     saveAlumno: function (alumnoData) {
         return axios.post('/api/alumnos', alumnoData);
+    },
+
+    updateAlumno: function (id, alumnoData) {
+        return axios.put('/api/alumnos/' + id, alumnoData)
     }
 };

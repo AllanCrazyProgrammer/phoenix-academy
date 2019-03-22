@@ -8,8 +8,9 @@ import API from "../utils/API"
 
 class EditModal extends React.Component {
 
+
     state = {
-        alumno: this.alumno,
+        alumno: "",
         edad: undefined,
         direccion: "",
         curp: undefined,
@@ -28,6 +29,12 @@ class EditModal extends React.Component {
         };
     }
 
+    onChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
     editUser = () => {
         this.handleShow();
         this.loadAlumno();
@@ -35,10 +42,15 @@ class EditModal extends React.Component {
     }
 
     loadAlumno = () => {
+
         API.getOneAlumno(this.props.id)
             .then(res => {
                 this.setState({
-                    alumnos: res.data
+                    alumno: res.data.alumno,
+                    edad: res.data.edad,
+                    direccion: res.data.direccion,
+                    curp: res.data.curp,
+                    enfermedad: res.data.enfermedad
                 })
             })
             .catch(err =>
@@ -48,11 +60,54 @@ class EditModal extends React.Component {
 
     handleClose() {
         this.setState({ show: false });
+        this.handleUpdate()
+        window.location.reload(true);
+
     }
+
+    handleDelete = () => {
+        debugger;
+        API.deleteAlumno(this.props.id)
+            .then(res => {
+                this.setState({
+                    alumnos: res.data
+                })
+            })
+            .catch(err =>
+
+                console.log("FALLANDO" + err));
+        this.handleClose()
+        window.location.reload(true);
+    }
+
 
     handleShow() {
         this.setState({ show: true });
     }
+
+    handleUpdate() {
+        var alumno = this.state.alumno
+        var edad = this.state.edad
+        var direccion = this.state.direccion
+        var curp = this.state.curp
+        var enfermedad = this.state.enfermedad
+
+        API.updateAlumno(this.props.id, { ... this.state })
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    alumno: alumno,
+                    edad: edad,
+                    direccion: direccion,
+                    curp: curp,
+                    enfermedad: enfermedad
+                })
+                console.log(this.state.data)
+            })
+            .catch(err =>
+                console.log("FALLANDO" + err));
+    };
+
 
     render() {
         return (
@@ -95,12 +150,12 @@ class EditModal extends React.Component {
 
 
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
+                        <Button variant="secondary" onClick={this.handleDelete}>
                             Delete
                         </Button>
                         <Button variant="primary" onClick={this.handleClose}>
                             Save Changes
-                      </Button>
+                    </Button>
                     </Modal.Footer>
 
                 </Modal>

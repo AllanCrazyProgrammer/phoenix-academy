@@ -26,8 +26,11 @@ class AllAlumnos extends Component {
     };
 
     onEditClick = id => {
-        this.props.history.push(`/${id}`);
+        console.log(id)
+        // this.props.history.push(`/${id}`);
     }
+
+
 
     render() {
         return (
@@ -46,20 +49,16 @@ class AllAlumnos extends Component {
                     <tbody>
                         {
                             this.state.alumnos.map(alumno => {
-                                console.log(alumno)
                                 const id = alumno._id;
                                 return (
-                                    <tr>
+                                    <tr key={id}>
                                         <td>{alumno.alumno}</td>
                                         <td>{alumno.edad}</td>
                                         <td>{alumno.direccion}</td>
                                         <td>{alumno.curp}</td>
                                         <td>{alumno.enfermedad}</td>
-                                        <td><button
-                                            className="btn btn-success"
-                                            onClick={(id) => this.onEditClick}>
-                                            Edit
-                                        </button>
+                                        <td>
+                                            <EditModal id={id} />
                                         </td>
                                     </tr>
                                 )
